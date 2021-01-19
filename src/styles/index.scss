@@ -189,3 +189,43 @@ aside {
 .multiselect--active {
   z-index: 1000 !important;
 }
+
+
+.flexBox {
+  display: -webkit-box;
+} 
+.flex1 {
+  -webkit-box-flex: 1;
+  display: block;
+  width: 100%
+}
+
+.flexContent {
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  display: -webkit-box;
+}
+
+.flexLeftContent {
+  -webkit-box-pack: initial;
+  -webkit-box-align: center;
+  display: -webkit-box;
+}
+
+.flexRightContent {
+  -webkit-box-pack: initial;
+  -webkit-box-align: center;
+  display: -webkit-box;
+}
+.flexEnd{
+  -webkit-box-pack: initial;
+  -webkit-box-align: end;
+  display: -webkit-box;
+}
+
+.flexCloumn {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}

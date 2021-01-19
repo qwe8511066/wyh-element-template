@@ -1,31 +1,43 @@
 <template>
-  <div class="navbar">
+  <div class="navbar flexBox">
     <hamburger
       id="hamburger-container"
       :is-active="sidebar.opened"
       class="hamburger-container"
       @toggleClick="toggleSideBar"
     />
-
-    <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
-
-    <div class="right-menu">
-      <el-dropdown
-        class="avatar-container right-menu-item hover-effect"
-        @command="handleCommand"
-        trigger="click"
-      >
-        <div class="avatar-wrapper">
-          <img src="~public/images/img.jpg" class="user-avatar" />
-          {{ name }}
-          <i class="el-icon-caret-bottom el-icon--right" />
+    <div class="flex1">
+      <div class="flexBox">
+        <div class="flex1" v-if="menuPosition === 'top'">
+          <el-tabs :value="activeRoute.toString()" class="headerTabs" @tab-click="clickTab">
+            <el-tab-pane
+              :label="route.meta.title"
+              :name="index.toString()"
+              style="color:#fff"
+              v-for="(route,index) in menuModule"
+              :key="index"
+            ></el-tab-pane>
+          </el-tabs>
         </div>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item icon="el-icon-circle-check" command="0">返回首页</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-check" command="1">退出用户</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+        <div class="right-menu flexContent">
+          <el-dropdown
+            class="avatar-container right-menu-item hover-effect"
+            @command="handleCommand"
+            trigger="click"
+          >
+            <div class="avatar-wrapper">
+              <img src="~public/images/img.jpg" class="user-avatar" />
+              <i class="el-icon-caret-bottom el-icon--right" />
+            </div>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item icon="el-icon-circle-check" command="0">返回首页</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-circle-check" command="1">退出用户</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </div>
     </div>
+    <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
   </div>
 </template>
 
@@ -33,15 +45,22 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-
+import { sonsTree } from '@/utils'
 export default {
   components: {
     Breadcrumb,
     Hamburger,
   },
   computed: {
-    ...mapGetters(['sidebar', 'name']),
+    ...mapGetters([
+      'sidebar',
+      'name',
+      'menuPosition',
+      'menuModule',
+      'activeRoute',
+    ]),
   },
+  created() {},
   methods: {
     handleCommand(value) {
       switch (value) {
@@ -65,6 +84,48 @@ export default {
         }
         this.toLastView(visitedViews, view)
       })
+    },
+
+    clickTab(evnet) {
+      this.$store.dispatch('menu/setActiveRoute', evnet.name)
+      this.$store.dispatch(
+        'permission/setRoutes',
+        this.menuModule[this.activeRoute].children
+      )
+
+      console.log(sonsTree([this.menuModule[this.activeRoute]]))
+
+      // const name = evnet.name
+      // const value = this.dynamicRoutes[
+      //   checkArrayString(this.dynamicRoutes, 'meta.title', name)
+      // ]
+      // if (name === '客服系统') {
+      //   this.$store.dispatch('app/setInitLoading', true)
+      //   service.post('/api/UserInfo/UserToAesHelper').then(
+      //     (data) => {
+      //       if (data && data.msg) {
+      //         window.open(
+      //           value.path +
+      //             `/noPwlogin.html?username=${data.msg}&token=${getToken()}`
+      //         )
+      //       }
+      //       this.$store.dispatch('app/setInitLoading', false)
+      //     },
+      //     (err) => {
+      //       this.$store.dispatch('app/setInitLoading', false)
+      //     }
+      //   )
+      //   return false
+      // }
+      // const arr = lowestArray(value)
+
+      // //找到最原始第一个菜单
+      // let path = arr ? arr.path : value.path
+      // //判断是否存储有已经存在的菜单
+      // //如刚刚进入 权限系统->角色权限->角色列表  如果已存在。则跳转该url
+      // path =
+      //   value && value.meta && value.meta.cacheUrl ? value.meta.cacheUrl : path
+      // this.$router.push({ path: path })
     },
 
     toggleSideBar() {
@@ -109,7 +170,6 @@ export default {
   }
 
   .right-menu {
-    float: right;
     height: 100%;
     line-height: 50px;
 

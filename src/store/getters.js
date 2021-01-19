@@ -12,5 +12,7 @@ const getters = {
   permission_routes: state => state.permission.routes,
   errorLogs: state => state.errorLog.logs,
   menuModule: state => state.menu.menuModule,
+  menuPosition: state => state.menu.position,
+  activeRoute: state => state.menu.activeRoute,
 }
 export default getters

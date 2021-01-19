@@ -443,3 +443,19 @@ export function formateObjToParamStr(paramObj) {
   return sdata.join('&');
 };
 
+
+
+export function sonsTree(arr) {
+  const temp = [];
+  const forFn = (list) => {
+    list.forEach(item => {
+      if (checkArray(item.children)) {
+        forFn(item.children);
+      } else {
+        temp.push(item);
+      }
+    })
+  };
+  forFn(arr);
+  return temp;
+}

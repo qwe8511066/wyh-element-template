@@ -15,14 +15,14 @@ const state = {
 
   position: 'top',
 
-  //剔除第一层路由作为菜单方在顶部
+  //判断顶部路由的切换  从而获取顶部路由下的缓存路由
   dynamicRoutes: [],
 
   //根据顶部的菜单获取其子集菜单列表方在左侧
   menuRoutes: [],
 
   //根据标题动态焦点
-  activeRoute: 0,
+  activeRoute: 1,
 }
 
 const mutations = {

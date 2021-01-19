@@ -7,8 +7,8 @@ import { getToken } from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
 import { checkArray } from '@/utils/index'
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
-
-const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
+import Vue from 'vue'
+const whiteList = ['/login'] // no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {
   // start progress bar
@@ -32,13 +32,14 @@ router.beforeEach(async (to, from, next) => {
         next()
       } else {
         try {
-          //获取菜单
+          //获取并设置菜单
           await store.dispatch('menu/getMenu')
-          await store.dispatch('menu/setMenuRouter')
+          //获取用户
           const { roles } = await store.dispatch('user/getInfo')
+          //根据菜单设置路由
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
           router.addRoutes(accessRoutes)
-          next({ ...to, replace: true })
+          next({ ...to, replace: false })
         } catch (error) {
           await store.dispatch('user/resetToken')
           Message.error(error || 'Has Error')
@@ -49,19 +50,24 @@ router.beforeEach(async (to, from, next) => {
     }
   } else {
     /* has no token*/
-
     if (whiteList.indexOf(to.path) !== -1) {
-      // in the free login whitelist, go directly
       next()
     } else {
-      // other pages that do not have permission to access are redirected to the login page.
       next(`/login?redirect=${to.path}`)
       NProgress.done()
     }
   }
 })
 
-router.afterEach(() => {
+router.afterEach(async (to, from, next) => {
   // finish progress bar
   NProgress.done()
+  // Vue.nextTick(() => {
+  //   console.log(to)
+  //   console.log(from)
+  // })
+  setTimeout(() => {
+    console.log(to)
+    console.log(from)
+  }, 333);
 })
