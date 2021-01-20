@@ -5,13 +5,11 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { getToken } from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
-import { checkArray } from '@/utils/index'
+import { checkArray, checkArrayString } from '@/utils/index'
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
-import Vue from 'vue'
 const whiteList = ['/login'] // no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {
-  // start progress bar
   NProgress.start()
 
   //设置title
@@ -25,10 +23,9 @@ router.beforeEach(async (to, from, next) => {
       next({ path: '/' })
       NProgress.done()
     } else {
-      const hasGetUserInfo = store.getters.name
-      const menuModule = store.getters.menuModule
+      const getters = store.getters
       //判断用户名称和全局变量是否存在菜单 
-      if (hasGetUserInfo && checkArray(menuModule)) {
+      if (getters.name && checkArray(getters.menuModule)) {
         next()
       } else {
         try {
@@ -60,14 +57,21 @@ router.beforeEach(async (to, from, next) => {
 })
 
 router.afterEach(async (to, from, next) => {
-  // finish progress bar
+  const getters = store.getters
+  //判断顶部菜单的路由切换 保存一个状态
+  //如 跳转到顶部菜单A1  菜单结构是A1->A2->A2-2->A3  下次点击A1的时候跳转到A3去
+  if (getters.menuPosition == 'top' && whiteList.indexOf(to.path) === -1) {
+    let dynamicRoutes = getters.dynamicRoutes
+    const index = checkArrayString(dynamicRoutes, 'label', to.meta.fatherNmae)
+    const fatheIndex = checkArrayString(getters.menuModule, 'name', to.meta.fatherNmae)
+    store.dispatch('menu/setActiveRouteMenu', fatheIndex)
+    const value = { label: to.meta.fatherNmae, value: to.path }
+    if (index == -1) {
+      dynamicRoutes.push(value)
+    } else {
+      dynamicRoutes.splice(index, 1, value)
+    }
+    store.dispatch('menu/setDynamicRoutes', dynamicRoutes)
+  }
   NProgress.done()
-  // Vue.nextTick(() => {
-  //   console.log(to)
-  //   console.log(from)
-  // })
-  setTimeout(() => {
-    console.log(to)
-    console.log(from)
-  }, 333);
 })

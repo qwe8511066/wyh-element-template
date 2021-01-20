@@ -3,13 +3,18 @@
     <hamburger
       id="hamburger-container"
       :is-active="sidebar.opened"
-      class="hamburger-container"
+      class="hamburger-container flexContent"
       @toggleClick="toggleSideBar"
     />
     <div class="flex1">
-      <div class="flexBox">
-        <div class="flex1" v-if="menuPosition === 'top'">
-          <el-tabs :value="activeRoute.toString()" class="headerTabs" @tab-click="clickTab">
+      <div class="flexBox height100">
+        <div class="flex1 flexLeftContent">
+          <el-tabs
+            v-if="menuPosition === 'top'"
+            :value="activeRoute.toString()"
+            class="headerTabs"
+            @tab-click="clickTab"
+          >
             <el-tab-pane
               :label="route.meta.title"
               :name="index.toString()"
@@ -19,19 +24,25 @@
             ></el-tab-pane>
           </el-tabs>
         </div>
-        <div class="right-menu flexContent">
+        <div class="right-menu">
           <el-dropdown
+            size="medium"
             class="avatar-container right-menu-item hover-effect"
             @command="handleCommand"
             trigger="click"
           >
             <div class="avatar-wrapper">
-              <img src="~public/images/img.jpg" class="user-avatar" />
-              <i class="el-icon-caret-bottom el-icon--right" />
+              <div class="flexBox height100">
+                <div class="flexContent">
+                  <img src="~public/images/img.jpg" class="user-avatar" />
+                  {{name}}
+                  <i class="el-icon-caret-bottom el-icon--right" />
+                </div>
+              </div>
             </div>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item icon="el-icon-circle-check" command="0">返回首页</el-dropdown-item>
-              <el-dropdown-item icon="el-icon-circle-check" command="1">退出用户</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-circle-check" class="right-menu-text" command="0">返回首页</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-circle-check" class="right-menu-text" command="1">退出用户</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -45,7 +56,7 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-import { sonsTree } from '@/utils'
+import { checkArrayString, sonsTree } from '@/utils'
 export default {
   components: {
     Breadcrumb,
@@ -58,6 +69,7 @@ export default {
       'menuPosition',
       'menuModule',
       'activeRoute',
+      'dynamicRoutes',
     ]),
   },
   created() {},
@@ -65,7 +77,7 @@ export default {
     handleCommand(value) {
       switch (value) {
         case '0':
-          this.$router.replace({ path: '/home' })
+          this.$router.replace({ path: '/' })
           break
 
         case '1':
@@ -87,13 +99,18 @@ export default {
     },
 
     clickTab(evnet) {
-      this.$store.dispatch('menu/setActiveRoute', evnet.name)
-      this.$store.dispatch(
-        'permission/setRoutes',
-        this.menuModule[this.activeRoute].children
-      )
+      this.$store.dispatch('menu/setActiveRouteMenu', evnet.name)
+      const routeChildren = this.menuModule[this.activeRoute].children
+      //判断顶部菜单是否有缓存路由界面
+      const index = checkArrayString(this.dynamicRoutes, 'label', evnet.label)
+      const path =
+        index == -1
+          ? sonsTree(routeChildren)[0].path
+          : this.dynamicRoutes[index].value
+      this.$router.push({ path: path })
+      // console.log(this.menuModule[this.activeRoute].children)
 
-      console.log(sonsTree([this.menuModule[this.activeRoute]]))
+      // console.log(sonsTree([this.menuModule[this.activeRoute]]))
 
       // const name = evnet.name
       // const value = this.dynamicRoutes[
@@ -140,24 +157,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/styles/variables.scss';
 .navbar {
-  height: 50px;
+  height: $headHeight;
+  background: $headBg;
   overflow: hidden;
   position: relative;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
-    line-height: 46px;
     height: 100%;
-    float: left;
     cursor: pointer;
     transition: background 0.3s;
     -webkit-tap-highlight-color: transparent;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.025);
-    }
   }
 
   .breadcrumb-container {
@@ -171,10 +182,12 @@ export default {
 
   .right-menu {
     height: 100%;
-    line-height: 50px;
 
     &:focus {
       outline: none;
+    }
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
     }
 
     .right-menu-item {
@@ -188,10 +201,6 @@ export default {
       &.hover-effect {
         cursor: pointer;
         transition: background 0.3s;
-
-        &:hover {
-          background: rgba(0, 0, 0, 0.025);
-        }
       }
     }
 
@@ -199,14 +208,17 @@ export default {
       margin-right: 30px;
 
       .avatar-wrapper {
-        margin-top: 5px;
+        height: 100%;
         position: relative;
+        color: white;
 
         .user-avatar {
           cursor: pointer;
           width: 40px;
+          display: block;
           height: 40px;
           border-radius: 10px;
+          margin-right: 8px;
         }
 
         .el-icon-caret-bottom {

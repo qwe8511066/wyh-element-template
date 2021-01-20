@@ -36,6 +36,7 @@ const actions = {
 
       //判断顶部布局的菜单
       if (getters.menuPosition === 'top') {
+
         let activeRoute = parseInt(getters.activeRoute)
         //判断下标是否超出菜单树的长度
         if (activeRoute > menuModule.length) {
@@ -71,7 +72,6 @@ function checkModuleRouter(menu, allMenu) {
     const fatherIndex = checkArrayString(allMenu, 'name', item.name)
     if (fatherIndex != -1) {
       state.fatherIndex = state.fatherIndex + 1;
-
     }
     item.meta = {
       title: item.title,

@@ -18,9 +18,6 @@ const state = {
   //判断顶部路由的切换  从而获取顶部路由下的缓存路由
   dynamicRoutes: [],
 
-  //根据顶部的菜单获取其子集菜单列表方在左侧
-  menuRoutes: [],
-
   //根据标题动态焦点
   activeRoute: 1,
 }
@@ -28,6 +25,9 @@ const state = {
 const mutations = {
   SET_MENU_MODULE: (state, menuModule) => {
     state.menuModule = menuModule
+  },
+  SET_POSITION: (state, value) => {
+    state.position = value
   },
   SET_APPLICATIONID: (state, applicationId) => {
     state.applicationId = applicationId
@@ -40,10 +40,6 @@ const mutations = {
   },
   SET_DYNAMIC_ROUTES: (state, routes) => {
     state.dynamicRoutes = routes;
-  },
-
-  SET_MENU_ROUTES: (state, routes) => {
-    state.menuRoutes = routes;
   },
 
   SET_ACTIVE_ROUTES: (state, routes) => {
@@ -77,12 +73,6 @@ const actions = {
     commit("SET_DYNAMIC_ROUTES", value);
   },
 
-
-  setMenuRoutes({ commit }, value) {
-    commit("SET_MENU_ROUTES", value);
-  },
-
-
   setActiveRoute({ commit }, value) {
     commit("SET_ACTIVE_ROUTES", value);
   },
@@ -98,7 +88,12 @@ const actions = {
           return false
         }
 
-        // checkModuleRouter()
+        for (let i = 0; i < data.length; i++) {
+          if (!data[i].children) {
+            commit('SET_POSITION', 'left')
+            Message.error('顶部菜单的布局错误：' + JSON.stringify(data[i]) + "。。请检查类型是否匹配。已强行修改布局");
+          }
+        }
         commit("SET_MENU_MODULE", data);
         resolve(response)
       }).catch(error => {
@@ -106,13 +101,24 @@ const actions = {
       })
     })
   },
+  setPosition: (state, value) => {
+    commit("SET_POSITION", value);
+  },
 
-  setMenuRouter() {
-    return new Promise((resolve, reject) => {
-      const menuModule = checkModuleRouter(state.menuModule)
-      resolve(menuModule)
-    })
-  }
+
+  setActiveRouteMenu({ commit }, value) {
+    if (value != state.activeRoute) {
+      //改变全局顶部下标
+      commit("SET_ACTIVE_ROUTES", value);
+      const currentRoute = state.menuModule[state.activeRoute]
+      //根据下标获取其子级菜单
+      const routeChildren = currentRoute.children
+      //设置左侧菜单
+      store.dispatch('permission/setRoutes', routeChildren)
+    }
+
+  },
+
 }
 
 export default {

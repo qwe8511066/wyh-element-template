@@ -27,6 +27,7 @@
 
     .scrollbar-wrapper {
       overflow-x: hidden !important;
+      border-right: 1px solid #e8e8e8;
     }
 
     .el-scrollbar__bar.is-vertical {
@@ -86,9 +87,23 @@
       background-color: $subMenuBg !important;
 
       &:hover {
+        color: $subMenuHoverTextColor!important;
         background-color: $subMenuHover !important;
       }
+      
     }
+  }
+
+  .el-menu-item.is-active,.el-submenu .el-menu-item.is-active {
+    &.is-active::after{
+        content:'';
+        position: absolute;
+        height: 100%;
+        background: $subMenuHoverTextColor;
+        width: 4px;
+        top: 0;
+        right: 0;
+      }
   }
 
   .hideSidebar {

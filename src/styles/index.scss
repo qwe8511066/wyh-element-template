@@ -229,3 +229,27 @@ aside {
   height: 100%;
   overflow: hidden;
 }
+.width100{width: 100%;}
+.height100{height: 100%;}
+.headerTabs {
+  .el-tabs__header {
+    margin: 0;
+  }
+  .el-tabs__nav-wrap::after{
+    display: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  .el-tabs__item{
+    color: white;
+    font-weight: 400;
+    &.is-active{
+      font-size: 15px;
+    }
+  }
+  .el-tabs__active-bar {
+    background: $headactiveBg;
+    height: 4px;
+}
+}

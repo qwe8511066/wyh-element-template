@@ -21,10 +21,9 @@
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
-      <li @click="refreshSelectedTag(selectedTag)">Refresh</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">Close</li>
-      <li @click="closeOthersTags">Close Others</li>
-      <li @click="closeAllTags(selectedTag)">Close All</li>
+      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
+      <li @click="closeOthersTags">关闭其他</li>
+      <!-- <li @click="closeAllTags(selectedTag)">关闭所有</li> -->
     </ul>
   </div>
 </template>
@@ -129,16 +128,6 @@ export default {
         }
       })
     },
-    refreshSelectedTag(view) {
-      this.$store.dispatch('tagsView/delCachedView', view).then(() => {
-        const { fullPath } = view
-        this.$nextTick(() => {
-          this.$router.replace({
-            path: '/redirect' + fullPath,
-          })
-        })
-      })
-    },
     closeSelectedTag(view) {
       this.$store
         .dispatch('tagsView/delView', view)
@@ -207,8 +196,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/styles/variables.scss';
 .tags-view-container {
-  height: 34px;
+  height: 50px;
   width: 100%;
   background: #fff;
   border-bottom: 1px solid #d8dce5;
@@ -218,35 +208,39 @@ export default {
       display: inline-block;
       position: relative;
       cursor: pointer;
-      height: 26px;
-      line-height: 26px;
-      border: 1px solid #d8dce5;
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid #eeeeee;
       color: #495060;
       background: #fff;
-      padding: 0 8px;
-      font-size: 12px;
-      margin-left: 5px;
-      margin-top: 4px;
+      border-radius: 3px;
+      padding: 0 10px;
+      font-size: 14px;
+      margin-left: 20px;
+      margin-top: 10px;
       &:first-of-type {
         margin-left: 15px;
       }
       &:last-of-type {
         margin-right: 15px;
       }
+      &:hover {
+        color: $headactiveBg;
+      }
       &.active {
-        background-color: #42b983;
+        background-color: $headactiveBg;
         color: #fff;
-        border-color: #42b983;
-        &::before {
-          content: '';
-          background: #fff;
-          display: inline-block;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          position: relative;
-          margin-right: 2px;
-        }
+        border-color: $headactiveBg;
+        // &::before {
+        //   content: '';
+        //   background: #fff;
+        //   display: inline-block;
+        //   width: 8px;
+        //   height: 8px;
+        //   border-radius: 50%;
+        //   position: relative;
+        //   margin-right: 2px;
+        // }
       }
     }
   }
@@ -273,29 +267,4 @@ export default {
   }
 }
 </style>
-
-<style lang="scss">
-//reset element css of el-icon-close
-.tags-view-wrapper {
-  .tags-view-item {
-    .el-icon-close {
-      width: 16px;
-      height: 16px;
-      vertical-align: 2px;
-      border-radius: 50%;
-      text-align: center;
-      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-      transform-origin: 100% 50%;
-      &:before {
-        transform: scale(0.6);
-        display: inline-block;
-        vertical-align: -3px;
-      }
-      &:hover {
-        background-color: #b4bccc;
-        color: #fff;
-      }
-    }
-  }
-}
-</style>
+ 
