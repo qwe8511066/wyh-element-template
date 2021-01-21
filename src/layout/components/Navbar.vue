@@ -56,7 +56,7 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-import { checkArrayString, sonsTree } from '@/utils'
+import { checkArray, checkArrayString, sonsTree } from '@/utils'
 export default {
   components: {
     Breadcrumb,
@@ -100,13 +100,26 @@ export default {
 
     clickTab(evnet) {
       this.$store.dispatch('menu/setActiveRouteMenu', evnet.name)
-      const routeChildren = this.menuModule[this.activeRoute].children
+      const currentMenu = this.menuModule[this.activeRoute]
+      if (currentMenu.path.includes('http')) {
+        window.open(currentMenu.path)
+        return false
+      }
+      const routeChildren = currentMenu.children
+      let path = currentMenu.path
       //判断顶部菜单是否有缓存路由界面
       const index = checkArrayString(this.dynamicRoutes, 'label', evnet.label)
-      const path =
-        index == -1
-          ? sonsTree(routeChildren)[0].path
-          : this.dynamicRoutes[index].value
+      if (
+        routeChildren &&
+        this.dynamicRoutes[index] &&
+        this.dynamicRoutes[index].value
+      ) {
+        path =
+          index == -1
+            ? sonsTree(routeChildren)[0].path
+            : this.dynamicRoutes[index].value
+      }
+
       this.$router.push({ path: path })
       // console.log(this.menuModule[this.activeRoute].children)
 

@@ -88,12 +88,12 @@ const actions = {
           return false
         }
 
-        for (let i = 0; i < data.length; i++) {
-          if (!data[i].children) {
-            commit('SET_POSITION', 'left')
-            Message.error('顶部菜单的布局错误：' + JSON.stringify(data[i]) + "。。请检查类型是否匹配。已强行修改布局");
-          }
-        }
+        // for (let i = 0; i < data.length; i++) {
+        //   if (!data[i].children) {
+        //     commit('SET_POSITION', 'left')
+        //     Message.error('顶部菜单的布局错误：' + JSON.stringify(data[i]) + "。。请检查类型是否匹配。已强行修改布局");
+        //   }
+        // }
         commit("SET_MENU_MODULE", data);
         resolve(response)
       }).catch(error => {
