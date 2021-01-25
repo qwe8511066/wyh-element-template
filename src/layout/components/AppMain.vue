@@ -1,6 +1,5 @@
 <template>
   <section class="app-main">
-    {{cachedViews}}
     <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
         <router-view :key="key" />
@@ -32,6 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/styles/variables.scss';
 .app-main {
   /* 50= navbar  50  */
   min-height: calc(100vh - 50px);
@@ -48,11 +48,12 @@ export default {
   .app-main {
     /* 110 = navbar + tags-view = 60 + 50 */
     min-height: calc(100vh - 110px);
+    padding: $mainPading;
     background: #efefef;
   }
 
   .fixed-header + .app-main {
-    padding-top: 110px;
+    padding-top: 110px + $mainPading;
   }
 }
 </style>

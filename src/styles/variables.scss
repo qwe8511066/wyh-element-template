@@ -24,6 +24,8 @@ $headHeight:60px;
 $headBg:#0B2251;
 $sideBarWidth: 210px;
 $headactiveBg:#1890ff;
+
+$mainPading:20px;
 // the :export directive is the magic sauce for webpack
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
 :export {
@@ -39,4 +41,5 @@ $headactiveBg:#1890ff;
   headBg:$headBg;
   headactiveBg:$headactiveBg;
   subMenuHoverTextColor:$subMenuHoverTextColor; 
+  mainPading:$mainPading;
 }

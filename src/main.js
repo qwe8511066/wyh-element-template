@@ -10,13 +10,14 @@ import './permission' // permission control
 import './utils/error-log' // error log
 import * as filters from './filters' // global filters
 import publicComponents from "@/utils/publicComponents";
+import service from '@/utils/request'
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
 }
 //全局组件库
 Vue.use(publicComponents);
-
+Vue.prototype.$http = service //全局HTTP
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })

@@ -13,7 +13,7 @@ const state = {
    **/
   menusButton: null,
 
-  position: 'top',
+  position: '',
 
   //判断顶部路由的切换  从而获取顶部路由下的缓存路由
   dynamicRoutes: [],
