@@ -1,13 +1,10 @@
 
 import ElementUI from 'element-ui'
-// import wyhElementTable from '@/components/LbTable/index'
-// import dialogWyhElementChoose from '@/components/dialogWyhElementChoose/index'
-// import dialogWyhElementChooseTabs from '@/components/dialogWyhElementChooseTabs/index'
-
 import wyhElementTable from '@/components/LbTable/index'
 import dialogWyhElementChoose from '@/components/dialogWyhElementChoose/index'
 import dialogWyhElementChooseTabs from '@/components/dialogWyhElementChooseTabs/index'
 import dialogWyhElementChooseSelect from '@/components/dialogWyhElementChooseSelect/index'
+import buttonPermission from '@/components/buttonPermission/index'
 
 
 
@@ -21,6 +18,7 @@ const publicComponents = {
     Vue.component(dialogWyhElementChoose.name, dialogWyhElementChoose)
     Vue.component(dialogWyhElementChooseTabs.name, dialogWyhElementChooseTabs)
     Vue.component(dialogWyhElementChooseSelect.name, dialogWyhElementChooseSelect)
+    Vue.component(buttonPermission.name, buttonPermission)
   }
 }
 

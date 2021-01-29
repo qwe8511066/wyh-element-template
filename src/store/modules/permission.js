@@ -84,7 +84,8 @@ function checkModuleRouter(menu, allMenu) {
       affix: item.affix,
       componetError: item.component,
       bigScreen: item.bigScreen,
-      fatherNmae: allMenu[state.fatherIndex].name
+      fatherNmae: allMenu[state.fatherIndex].name,
+      permissionButtons: item.permissionButtons,
     }
     const $item = { ...item };
     if ($item.component === "" || $item.component === "0") {
@@ -116,7 +117,6 @@ function getViews(path) {
       try {
         resolve(require("@/views/" + path + ".vue"));
       } catch (error) {
-        console.error(error);
         resolve(require("@/views/componentError/index.vue"));
       }
     });

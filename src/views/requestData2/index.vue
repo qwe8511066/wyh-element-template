@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'requestData1',
+  name: 'requestData2',
   components: {},
   data() {
     return {

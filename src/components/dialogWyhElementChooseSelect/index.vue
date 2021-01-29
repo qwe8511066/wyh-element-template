@@ -182,7 +182,6 @@ export default {
     },
     //快捷方式
     mergeFn(valie, valueLabel, item, itemLabel) {
-      console.log(item ? '11' : '22')
       this.$lodash.merge(
         valie,
         setMultistage(

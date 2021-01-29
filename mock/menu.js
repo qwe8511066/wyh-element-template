@@ -23,9 +23,19 @@ module.exports = [
           redirect: '/requestData',
           children: [{
             path: '/requestData',
-            name: '接口表单(post axios)',
+            name: '接口表单(post 按钮权限)',
             component: '/requestData/index',
-            title: '接口表单(post axios)', icon: 'dashboard'
+            title: '接口表单(post 按钮权限)', icon: 'dashboard',
+            permissionButtons: [
+              {
+                label: '新增',
+                ionic: 'el-icon-edit'
+              },
+              {
+                label: '删除',
+                ionic: 'el-icon-delete'
+              },
+            ]
           }]
         },
 
@@ -35,9 +45,15 @@ module.exports = [
           redirect: '/requestData3',
           children: [{
             path: '/requestData3',
-            name: '接口表单(get axios)',
+            name: '接口表单(get 按钮权限)',
             component: '/requestData3/index',
-            title: '接口表单(get axios)', icon: 'dashboard'
+            title: '接口表单(get 按钮权限)', icon: 'dashboard',
+            permissionButtons: [
+              {
+                label: '编辑',
+                ionic: 'el-icon-edit'
+              },
+            ],
           }]
         },
         {
@@ -70,9 +86,27 @@ module.exports = [
           redirect: '/customColumn',
           children: [{
             path: '/customColumn',
-            name: '自定义列',
+            name: '自定义列(按钮权限)',
             component: '/customColumn/index',
-            title: '自定义列', icon: 'dashboard'
+            title: '自定义列(按钮权限)', icon: 'dashboard',
+            permissionButtons: [
+              {
+                label: '新增',
+                ionic: 'el-icon-folder-add'
+              },
+              {
+                label: '编辑',
+                ionic: 'el-icon-edit'
+              },
+              {
+                label: '查看',
+                ionic: 'el-icon-view'
+              },
+              {
+                label: '删除',
+                ionic: 'el-icon-delete'
+              },
+            ],
           }]
         },
 
