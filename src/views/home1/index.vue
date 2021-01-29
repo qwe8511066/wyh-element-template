@@ -5,9 +5,7 @@
 <script>
 export default {
   name: 'home133',
-  created() {
-    console.log('home1')
-  },
+  created() {},
 }
 </script>
 

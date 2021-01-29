@@ -15,5 +15,6 @@ const getters = {
   menuPosition: state => state.menu.position,
   activeRoute: state => state.menu.activeRoute,
   dynamicRoutes: state => state.menu.dynamicRoutes,
+  fixedFirst: state => state.menu.fixedFirst,
 }
 export default getters

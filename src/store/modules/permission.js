@@ -27,10 +27,14 @@ const actions = {
       const getters = store.getters
       //根据菜单设置路由模块
       let menuModule = checkModuleRouter(getters.menuModule, getters.menuModule)
+      const sonsTreeNode = sonsTree([menuModule[0]])[0]
 
+      if (getters.fixedFirst) {
+        sonsTreeNode.meta.affix = true
+      }
 
-      //追加默认路由
-      menuModule.push({ path: '/', redirect: sonsTree([menuModule[0]])[0].path, hidden: true });
+      //追加第一个为默认路由
+      menuModule.push({ path: '/', redirect: sonsTreeNode.path, hidden: true });
       //追加404 写在静态会导致一开始就404
       menuModule.push({ path: '*', redirect: '/404', hidden: true });
 

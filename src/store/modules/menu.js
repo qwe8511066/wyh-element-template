@@ -13,6 +13,9 @@ const state = {
    **/
   menusButton: null,
 
+  //菜单的位置 如top  或者别的
+  //top后菜单树每棵树必须要有一个顶级应用如：权限模块->权限菜单
+  //                                   权限模块->用户权限
   position: '',
 
   //判断顶部路由的切换  从而获取顶部路由下的缓存路由
@@ -20,6 +23,9 @@ const state = {
 
   //根据标题动态焦点
   activeRoute: 1,
+
+  //固定第一个菜单
+  fixedFirst: true,
 }
 
 const mutations = {

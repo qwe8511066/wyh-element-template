@@ -42,14 +42,13 @@ export const constantRoutes = [
     hidden: true
   },
   // {
-  //   path: '/',
+  //   path: '/home',
   //   component: Layout,
-  //   redirect: 'home',
   //   children: [{
-  //     path: 'home',
+  //     path: '/home',
   //     name: 'home',
   //     component: () => import('@/views/home/index'),
-  //     meta: { title: '静态列表', icon: 'dashboard', }
+  //     meta: { title: '首页', icon: 'dashboard', }
   //   }]
   // },
 

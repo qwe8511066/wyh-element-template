@@ -54,6 +54,7 @@ export default {
 
   .fixed-header + .app-main {
     padding-top: 110px + $mainPading;
+    min-height: calc(100vh - 0px);
   }
 }
 </style>

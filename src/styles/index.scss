@@ -262,3 +262,8 @@ aside {
     margin-top:  0!important;
   }
 }
+
+.myDialog .el-dialog__body{max-height: calc(70vh - 110px);overflow: auto;}
+.noLabel .el-radio__label,.el-popper.publicChoiceSelect{
+  display: none;
+}  

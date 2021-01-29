@@ -1,11 +1,14 @@
 <template>
   <div>
+    <el-button type="primary" @click="dialogVisible = true">点击打开单选人弹窗</el-button>
     <dialogWyhElementChoose
+      :dialogVisible="dialogVisible"
       :radioAttribute="radioAttribute"
       type="radio"
       :listServe="listServe"
       :column="leftColumn"
       :rightColumn="rightColumn"
+      @close="closeFn"
     ></dialogWyhElementChoose>
 
     <div class="padding20">
@@ -69,6 +72,7 @@ export default {
   components: {},
   data() {
     return {
+      dialogVisible: false,
       //checkbox 的判断
       radioAttribute: {
         //判断的属性 唯一值来判断
@@ -103,7 +107,11 @@ export default {
       ],
     }
   },
-  methods: {},
+  methods: {
+    closeFn(value) {
+      this.dialogVisible = false
+    },
+  },
   created() {},
 }
 </script>

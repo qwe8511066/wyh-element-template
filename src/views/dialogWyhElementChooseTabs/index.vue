@@ -1,6 +1,13 @@
 <template>
   <div>
-    <dialogWyhElementChooseTabs :tabs="tabs" :rightColumn="rightColumn" :tabsActive="tabsActive"></dialogWyhElementChooseTabs>
+    <el-button type="primary" @click="dialogVisible = true">点击打开单选人弹窗</el-button>
+    <dialogWyhElementChooseTabs
+      :dialogVisible="dialogVisible"
+      :tabs="tabs"
+      :rightColumn="rightColumn"
+      :tabsActive="tabsActive"
+      @close="closeFn"
+    ></dialogWyhElementChooseTabs>
     <div class="padding20">
       <el-card class="box-card">
         <div slot="header" class="clearfix">
@@ -165,6 +172,7 @@ export default {
   components: {},
   data() {
     return {
+      dialogVisible: false,
       tabsActive: 0,
       tabs: [
         {
@@ -308,7 +316,11 @@ export default {
       ],
     }
   },
-  methods: {},
+  methods: {
+    closeFn(value) {
+      this.dialogVisible = false
+    },
+  },
   created() {},
 }
 </script>

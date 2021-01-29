@@ -1,9 +1,12 @@
 <template>
   <div>
+    <el-button type="primary" @click="dialogVisible = true">点击打开多选人弹窗</el-button>
     <dialogWyhElementChoose
+      :dialogVisible="dialogVisible"
       :checkboxAttribute="checkboxAttribute"
       type="checkbox"
       :listServe="listServe"
+      @close="closeFn"
       :column="leftColumn"
       :rightColumn="rightColumn"
     ></dialogWyhElementChoose>
@@ -65,6 +68,7 @@ export default {
   components: {},
   data() {
     return {
+      dialogVisible: false,
       //checkbox 的判断
       checkboxAttribute: {
         //判断的属性 唯一值来判断
@@ -95,7 +99,11 @@ export default {
       ],
     }
   },
-  methods: {},
+  methods: {
+    closeFn(value) {
+      this.dialogVisible = false
+    },
+  },
   created() {},
 }
 </script>

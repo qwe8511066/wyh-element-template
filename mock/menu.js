@@ -279,6 +279,12 @@ module.exports = [
             component: '/dialogWyhElementChooseRadio/index',
             title: '列表选人(单选)', icon: 'dashboard'
           },
+          {
+            path: '/dialogWyhElementChooseSelect',
+            name: '下拉框单/多选人',
+            component: '/dialogWyhElementChooseSelect/index',
+            title: '下拉框单/多选人', icon: 'dashboard'
+          },
 
           ]
         },

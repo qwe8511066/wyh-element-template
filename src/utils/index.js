@@ -403,6 +403,11 @@ export function getMultistage(data, key) {
   return temp
 }
 
+
+export function selectChoiceValue(arr, value) {
+  return arr && arr[0] ? getMultistage(arr[0], value) : null
+}
+
 /**
  * 动态设置对象 如user.admin.page  转成对象
  * @param {*} data  设置的对象
