@@ -5,6 +5,7 @@
     :icon="button ? button.icon : undefined"
     v-bind="$attrs"
     v-on="$listeners"
+    :type="$attrs&& $attrs.type?$attrs.type:'text'"
   >
     <template>{{ button ? button.label : name }}</template>
   </el-button>

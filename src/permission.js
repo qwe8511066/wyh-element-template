@@ -29,6 +29,7 @@ router.beforeEach(async (to, from, next) => {
         next()
       } else {
         try {
+          store.dispatch('app/setInitLoading', true)
           //获取并设置菜单
           await store.dispatch('menu/getMenu')
           //获取用户
@@ -36,17 +37,19 @@ router.beforeEach(async (to, from, next) => {
           //根据菜单设置路由
           const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
           router.addRoutes(accessRoutes)
+          store.dispatch('app/setInitLoading', false)
           next({ ...to, replace: false })
         } catch (error) {
           await store.dispatch('user/resetToken')
           Message.error(error || 'Has Error')
+          store.dispatch('app/setInitLoading', false)
           next(`/login?redirect=${to.path}`)
           NProgress.done()
         }
       }
     }
   } else {
-    /* has no token*/
+    store.dispatch('app/setInitLoading', false)
     if (whiteList.indexOf(to.path) !== -1) {
       next()
     } else {

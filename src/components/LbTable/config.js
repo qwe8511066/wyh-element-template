@@ -2,7 +2,7 @@ export default {
   props: {
     border: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     summaryMethod: {
       type: Function,

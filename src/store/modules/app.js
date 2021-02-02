@@ -6,7 +6,9 @@ const state = {
     withoutAnimation: false
   },
   device: 'desktop',
-  size: Cookies.get('size') || 'medium'
+  size: Cookies.get('size') || 'medium',
+  //初始化走列表请求的loading
+  initLoading: false,
 }
 
 const mutations = {
@@ -30,7 +32,10 @@ const mutations = {
   SET_SIZE: (state, size) => {
     state.size = size
     Cookies.set('size', size)
-  }
+  },
+  SET_INITLOADING: (state, type) => {
+    state.initLoading = type
+  },
 }
 
 const actions = {
@@ -45,7 +50,10 @@ const actions = {
   },
   setSize({ commit }, size) {
     commit('SET_SIZE', size)
-  }
+  },
+  setInitLoading({ commit }, type) {
+    commit('SET_INITLOADING', type)
+  },
 }
 
 export default {

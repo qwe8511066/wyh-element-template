@@ -108,6 +108,12 @@ export default {
       immediate: true,
     },
   },
+
+  //登陆页清空全局菜单
+  created() {
+    this.$store.dispatch('menu/setMenuModule', [])
+    console.log(this.$store.getters)
+  },
   methods: {
     showPwd() {
       if (this.passwordType === 'password') {

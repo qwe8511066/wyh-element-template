@@ -29,11 +29,11 @@ module.exports = [
             permissionButtons: [
               {
                 label: '新增',
-                ionic: 'el-icon-edit'
+                icon: 'el-icon-edit'
               },
               {
                 label: '删除',
-                ionic: 'el-icon-delete'
+                icon: 'el-icon-delete'
               },
             ]
           }]
@@ -51,7 +51,7 @@ module.exports = [
             permissionButtons: [
               {
                 label: '编辑',
-                ionic: 'el-icon-edit'
+                icon: 'el-icon-edit'
               },
             ],
           }]
@@ -92,19 +92,19 @@ module.exports = [
             permissionButtons: [
               {
                 label: '新增',
-                ionic: 'el-icon-folder-add'
+                icon: 'el-icon-folder-add'
               },
               {
                 label: '编辑',
-                ionic: 'el-icon-edit'
+                icon: 'el-icon-edit'
               },
               {
                 label: '查看',
-                ionic: 'el-icon-view'
+                icon: 'el-icon-view'
               },
               {
                 label: '删除',
-                ionic: 'el-icon-delete'
+                icon: 'el-icon-delete'
               },
             ],
           }]

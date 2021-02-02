@@ -90,12 +90,7 @@ export default {
       }
     },
     closeAllTags(view) {
-      this.$store.dispatch('tagsView/delAllViews').then(({ visitedViews }) => {
-        if (this.affixTags.some((tag) => tag.path === view.path)) {
-          return
-        }
-        this.toLastView(visitedViews, view)
-      })
+      this.$store.dispatch('tagsView/delAllViews')
     },
 
     clickTab(evnet) {
