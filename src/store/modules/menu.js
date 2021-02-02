@@ -7,12 +7,6 @@ const state = {
   // 菜单
   menuModule: [],
 
-  /**
-   * 菜单的按钮权限  
-   * 对象格式。去除根菜单  格式:{'url':{'新增':'icon'}}
-   **/
-  menusButton: null,
-
   //菜单的位置 如top  或者别的
   //top后菜单树每棵树必须要有一个顶级应用如：权限模块->权限菜单
   //                                   权限模块->用户权限
@@ -38,9 +32,6 @@ const mutations = {
   SET_APPLICATIONID: (state, applicationId) => {
     state.applicationId = applicationId
   },
-  SET_MENUSBUTTON: (state, menus) => {
-    state.menusButton = menus
-  },
   SET_APPLICATIONTITLE: (state, applicationTitle) => {
     state.applicationTitle = applicationTitle
   },
@@ -63,11 +54,6 @@ const actions = {
     commit
   }, applicationId) {
     commit('SET_APPLICATIONID', applicationId)
-  },
-  setMenusButton({
-    commit
-  }, menus) {
-    commit('SET_MENUSBUTTON', menus)
   },
   setApplicationTitle({
     commit

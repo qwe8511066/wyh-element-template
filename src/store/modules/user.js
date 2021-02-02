@@ -1,7 +1,7 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
-
+import store from '@/store'
 const state = {
   token: getToken(),
   name: '',
@@ -78,14 +78,11 @@ const actions = {
       logout(state.token).then(() => {
         commit('SET_TOKEN', '')
         commit('SET_ROLES', [])
-        commit('SET_NAME', '')
+        store.dispatch('menu/setMenuModule', [])
         removeToken()
         resetRouter()
-
-        // reset visited views and cached views
-        // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
         dispatch('tagsView/delAllViews', null, { root: true })
-
+        location.reload();
         resolve()
       }).catch(error => {
         reject(error)
