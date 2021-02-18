@@ -2,7 +2,6 @@ import { getMenu } from '@/api/menu'
 import { checkArray } from '@/utils'
 import { Message } from 'element-ui'
 import store from '@/store'
-import Layout from "@/layout";
 const state = {
   // 菜单
   menuModule: [],
@@ -10,7 +9,7 @@ const state = {
   //菜单的位置 如top  或者别的
   //top后菜单树每棵树必须要有一个顶级应用如：权限模块->权限菜单
   //                                   权限模块->用户权限
-  position: '',
+  position: 'top',
 
   //判断顶部路由的切换  从而获取顶部路由下的缓存路由
   dynamicRoutes: [],

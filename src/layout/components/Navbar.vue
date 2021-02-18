@@ -101,9 +101,13 @@ export default {
         return false
       }
       const routeChildren = currentMenu.children
-      let path = currentMenu.path
+      let path = checkArray(currentMenu.children)
+        ? sonsTree(routeChildren)[0].path
+        : currentMenu.path
+
       //判断顶部菜单是否有缓存路由界面
       const index = checkArrayString(this.dynamicRoutes, 'label', evnet.label)
+      //判断有缓存记录
       if (
         routeChildren &&
         this.dynamicRoutes[index] &&
@@ -114,43 +118,7 @@ export default {
             ? sonsTree(routeChildren)[0].path
             : this.dynamicRoutes[index].value
       }
-
       this.$router.push({ path: path })
-      // console.log(this.menuModule[this.activeRoute].children)
-
-      // console.log(sonsTree([this.menuModule[this.activeRoute]]))
-
-      // const name = evnet.name
-      // const value = this.dynamicRoutes[
-      //   checkArrayString(this.dynamicRoutes, 'meta.title', name)
-      // ]
-      // if (name === '客服系统') {
-      //   this.$store.dispatch('app/setInitLoading', true)
-      //   service.post('/api/UserInfo/UserToAesHelper').then(
-      //     (data) => {
-      //       if (data && data.msg) {
-      //         window.open(
-      //           value.path +
-      //             `/noPwlogin.html?username=${data.msg}&token=${getToken()}`
-      //         )
-      //       }
-      //       this.$store.dispatch('app/setInitLoading', false)
-      //     },
-      //     (err) => {
-      //       this.$store.dispatch('app/setInitLoading', false)
-      //     }
-      //   )
-      //   return false
-      // }
-      // const arr = lowestArray(value)
-
-      // //找到最原始第一个菜单
-      // let path = arr ? arr.path : value.path
-      // //判断是否存储有已经存在的菜单
-      // //如刚刚进入 权限系统->角色权限->角色列表  如果已存在。则跳转该url
-      // path =
-      //   value && value.meta && value.meta.cacheUrl ? value.meta.cacheUrl : path
-      // this.$router.push({ path: path })
     },
 
     toggleSideBar() {
