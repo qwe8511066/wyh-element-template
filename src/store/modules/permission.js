@@ -1,7 +1,7 @@
 import { constantRoutes } from '@/router'
 import store from '@/store'
 import Layout from "@/layout";
-import { checkArrayString, getMultistage, sonsTree } from '@/utils';
+import { checkArray, checkArrayString, getMultistage, sonsTree } from '@/utils';
 
 const state = {
   routes: [],
@@ -47,9 +47,11 @@ const actions = {
           store.dispatch('menu/activeRoute', 0)
           activeRoute = 0
         }
+        //顶部菜单则重新排序过
         commit('SET_ROUTES', menuModule[activeRoute].children)
       } else {
-        commit('SET_ROUTES', menuModule)
+        //左侧菜单获取菜单树排序
+        commit('SET_ROUTES', getters.menuModule)
       }
       resolve(menuModule)
     })
@@ -94,15 +96,11 @@ function checkModuleRouter(menu, allMenu) {
       res.push(...checkModuleRouter($item.children, allMenu));
     } else {
       // 根路由
-      if ($item.component === "true") {
-        $item.component = Layout;
+      $item.component = getViews(
+        $item.component.replace(/(^\/\/*)|(\/\/*$)/g, "")
+      );
+      if (checkArray($item.children)) {
         $item.children = checkModuleRouter($item.children, allMenu);
-      }
-      else {
-        // 非根路由
-        $item.component = getViews(
-          $item.component.replace(/(^\/\/*)|(\/\/*$)/g, "")
-        );
       }
       res.push($item);
     }
@@ -115,7 +113,7 @@ function getViews(path) {
   return resolve => {
     require.ensure([], require => {
       try {
-        resolve(require("@/views/" + path + ".vue"));
+        resolve(require("@/" + path + ".vue"));
       } catch (error) {
         resolve(require("@/views/componentError/index.vue"));
       }

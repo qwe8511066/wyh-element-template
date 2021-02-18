@@ -13,12 +13,15 @@ import publicComponents from "@/utils/publicComponents";
 import '@/directive/dialogDrag.js' //全局弹窗拖拽
 import service from '@/utils/request'
 import lodash from "lodash";
+//全局变量
+import '@/global/';
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
 }
 //全局组件库
 Vue.use(publicComponents);
+
 Vue.prototype.$lodash = lodash;
 Vue.prototype.$http = service //全局HTTP
 Object.keys(filters).forEach(key => {
@@ -29,5 +32,5 @@ new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
 })

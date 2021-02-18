@@ -6,25 +6,24 @@ module.exports = [
     response: config => {
       const value = [
         {
-          // path: '/staticData',
-          component: 'true',
+          component: 'layout/index',
           path: '/staticData',
           children: [{
             path: '/staticData',
             name: '静态列表',
-            component: '/staticData/index',
+            component: 'views//staticData/index',
             title: '静态列表', icon: 'dashboard'
           }]
         },
 
         {
           path: '/requestData',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/requestData',
           children: [{
             path: '/requestData',
             name: '接口表单(post 按钮权限)',
-            component: '/requestData/index',
+            component: 'views//requestData/index',
             title: '接口表单(post 按钮权限)', icon: 'dashboard',
             permissionButtons: [
               {
@@ -41,12 +40,12 @@ module.exports = [
 
         {
           path: '/requestData3',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/requestData3',
           children: [{
             path: '/requestData3',
             name: '接口表单(get 按钮权限)',
-            component: '/requestData3/index',
+            component: 'views//requestData3/index',
             title: '接口表单(get 按钮权限)', icon: 'dashboard',
             permissionButtons: [
               {
@@ -58,36 +57,36 @@ module.exports = [
         },
         {
           path: '/requestData1',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/requestData1',
           children: [{
             path: '/requestData1',
             name: '接口返回对象不一致表单',
-            component: '/requestData1/index',
+            component: 'views//requestData1/index',
             title: '接口返回对象不一致的表单', icon: 'dashboard'
           }]
         },
 
         {
           path: '/requestData2',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/requestData2',
           children: [{
             path: '/requestData2',
             name: '接口PageSize不一致表单',
-            component: '/requestData2/index',
+            component: 'views//requestData2/index',
             title: '接口PageSize不一致的表单', icon: 'dashboard'
           }]
         },
 
         {
           path: '/customColumn',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/customColumn',
           children: [{
             path: '/customColumn',
             name: '自定义列(按钮权限)',
-            component: '/customColumn/index',
+            component: 'views//customColumn/index',
             title: '自定义列(按钮权限)', icon: 'dashboard',
             permissionButtons: [
               {
@@ -112,179 +111,179 @@ module.exports = [
 
         {
           path: '/columnJudgment',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/columnJudgment',
           children: [{
             path: '/columnJudgment',
             name: '列的判断',
-            component: '/columnJudgment/index',
+            component: 'views//columnJudgment/index',
             title: '根据字段隐藏或显示列', icon: 'dashboard'
           }]
         },
 
         {
           path: '/setListTable',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/setListTable',
           children: [{
             path: '/setListTable',
             name: '设置和获取list',
-            component: '/setListTable/index',
+            component: 'views//setListTable/index',
             title: '设置和获取list', icon: 'dashboard'
           }]
         },
 
         {
           path: '/complexData',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/complexData',
           children: [{
             path: '/complexData',
             name: '复杂自定义表单',
-            component: '/complexData/index',
+            component: 'views//complexData/index',
             title: '复杂自定义表单', icon: 'dashboard'
           }]
         },
 
         {
           path: '/radioData',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/radioData',
           children: [{
             path: '/radioData',
             name: '单选表单',
-            component: '/radioData/index',
+            component: 'views//radioData/index',
             title: '单选表单', icon: 'dashboard'
           }]
         },
 
         {
           path: '/checkData',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/checkData',
           children: [{
             path: '/checkData',
             name: '多选列表更新不清空已选',
-            component: '/checkData/index',
+            component: 'views//checkData/index',
             title: '多选列表更新不清空已选', icon: 'dashboard'
           }]
         },
 
         {
           path: '/checkData1',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/checkData1',
           children: [{
             path: '/checkData1',
             name: '多选列表更新清空已选',
-            component: '/checkData1/index',
+            component: 'views//checkData1/index',
             title: '多选列表更新清空已选', icon: 'dashboard'
           }]
         },
 
         {
           path: '/resetMyPages',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/resetMyPages',
           children: [{
             path: '/resetMyPages',
             name: '重置myPages',
-            component: '/resetMyPages/index',
+            component: 'views//resetMyPages/index',
             title: '重置myPages', icon: 'dashboard'
           }]
         },
 
         {
           path: '/autoSearchData',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/autoSearchData',
           children: [{
             path: '/autoSearchData',
             name: 'myPages变了自动搜索列表',
-            component: '/autoSearchData/index',
+            component: 'views//autoSearchData/index',
             title: 'myPages变了自动搜索列表', icon: 'dashboard'
           }]
         },
 
         {
           path: '/maxheightData',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/maxheightData',
           children: [{
             path: '/maxheightData',
             name: '流动高度列表',
-            component: '/maxheightData/index',
+            component: 'views//maxheightData/index',
             title: '流动高度列表', icon: 'dashboard'
           }]
         },
 
         {
           path: '/thetreeData',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/thetreeData',
           children: [{
             path: '/thetreeData',
             name: '树形列表分页的',
-            component: '/thetreeData/index',
+            component: 'views//thetreeData/index',
             title: '树形列表分页的', icon: 'dashboard'
           }]
         },
 
         {
           path: '/thetreeData1',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/thetreeData1',
           children: [{
             path: '/thetreeData1',
             name: '树形列表不带分页的',
-            component: '/thetreeData1/index',
+            component: 'views//thetreeData1/index',
             title: '树形列表不带分页的', icon: 'dashboard'
           }]
         },
 
         {
           path: '/multiLevelHeader',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/multiLevelHeader',
           children: [{
             path: '/multiLevelHeader',
             name: '多级表头',
-            component: '/multiLevelHeader/index',
+            component: 'views//multiLevelHeader/index',
             title: '多级表头', icon: 'dashboard'
           }]
         },
 
         {
           path: '/dynamicallyMergeTables',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/dynamicallyMergeTables',
           children: [{
             path: '/dynamicallyMergeTables',
             name: '动态合并表格',
-            component: '/dynamicallyMergeTables/index',
+            component: 'views//dynamicallyMergeTables/index',
             title: '动态合并表格', icon: 'dashboard'
           }]
         },
 
         {
           path: '/manuallyMergeTables',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/manuallyMergeTables',
           children: [{
             path: '/manuallyMergeTables',
             name: '手动合并表格',
-            component: '/manuallyMergeTables/index',
+            component: 'views//manuallyMergeTables/index',
             title: '手动合并表格', icon: 'dashboard'
           }]
         },
         {
           path: '/totalAtTheEndOfTheTable',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/totalAtTheEndOfTheTable',
           children: [{
             path: '/totalAtTheEndOfTheTable',
             name: '表尾合计',
-            component: '/totalAtTheEndOfTheTable/index',
+            component: 'views//totalAtTheEndOfTheTable/index',
             title: '表尾合计', icon: 'dashboard'
           }]
         },
@@ -292,34 +291,33 @@ module.exports = [
 
         {
           path: '/dialogWyhElementChoose',
-          component: 'true',
+          component: 'layout/index',
           redirect: '/dialogWyhElementChoose',
           title: '业务组件', icon: 'dashboard',
           children: [{
             path: '/dialogWyhElementChooseTabs',
             name: '列表选人(选项卡)',
-            component: '/dialogWyhElementChooseTabs/index',
+            component: 'views//dialogWyhElementChooseTabs/index',
             title: '列表选人(选项卡)', icon: 'dashboard'
           },
           {
             path: '/dialogWyhElementChoose',
             name: '列表选人(多选)',
-            component: '/dialogWyhElementChoose/index',
+            component: 'views//dialogWyhElementChoose/index',
             title: '列表选人(多选)', icon: 'dashboard'
           },
           {
             path: '/dialogWyhElementChooseRadio',
             name: '列表选人(单选)',
-            component: '/dialogWyhElementChooseRadio/index',
+            component: 'views//dialogWyhElementChooseRadio/index',
             title: '列表选人(单选)', icon: 'dashboard'
           },
           {
             path: '/dialogWyhElementChooseSelect',
             name: '下拉框单/多选人',
-            component: '/dialogWyhElementChooseSelect/index',
+            component: 'views//dialogWyhElementChooseSelect/index',
             title: '下拉框单/多选人', icon: 'dashboard'
           },
-
           ]
         },
 
@@ -327,7 +325,7 @@ module.exports = [
           path: '/test',
           name: '测试界面1',
           //顶级菜单  模拟数据
-          component: 'true',
+          component: 'layout/index',
           title: '测试界面1',
           affix: false,//固定在tags-view 
           hidden: false, //是否隐藏
@@ -336,22 +334,22 @@ module.exports = [
             {
               path: '/test/test1',
               name: 'home1',
-              component: '/home1/index',
+              component: '',
               title: '测试界面1-001',
-              // children: [
-              //   {
-              //     path: '/test/test1/testA1',
-              //     name: 'home1',
-              //     component: '/home1/index',
-              //     title: '测试界面A1-001',
-              //   },
-              //   {
-              //     path: '/test/test1/testB2',
-              //     name: 'home1',
-              //     component: '/home1/index',
-              //     title: '测试界面B1-001',
-              //   }
-              // ],
+              children: [
+                {
+                  path: '/test/test1/testA1',
+                  name: 'home1',
+                  component: 'views/home1/index',
+                  title: '测试界面A1-001',
+                },
+                {
+                  path: '/test/test1/testB2',
+                  name: 'home1',
+                  component: 'views/home1/index',
+                  title: '测试界面B1-001',
+                }
+              ],
               affix: false,//固定在tags-view 
             }
           ]
@@ -359,7 +357,7 @@ module.exports = [
         {
           path: '/test/test2',
           name: 'home2',
-          component: '/home2/index',
+          component: 'views/home2/index',
           title: '测试界面2-002',
           affix: false,//固定在tags-view 
         }
