@@ -132,10 +132,7 @@ aside {
 .pagination-container {
   margin-top: 30px;
 }
-
-.text-center {
-  text-align: center
-}
+ 
 
 .sub-navbar {
   height: 50px;
@@ -261,9 +258,34 @@ aside {
     padding: 15px 10px;
     margin-top:  0!important;
   }
+  &[highlight-current-row="true"] .el-table__body td{
+    cursor: pointer;
+  }
 }
 
 .myDialog .el-dialog__body{max-height: calc(70vh - 110px);overflow: auto;}
 .noLabel .el-radio__label,.el-popper.publicChoiceSelect{
   display: none;
-}  
+}
+
+.autoForm{
+  .el-form-item{
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  .el-date-editor,
+    .el-input-number--medium,
+    .el-select,
+    .el-cascader,.el-input-number{
+      width: 100%;
+      margin-left: 0 !important;
+    };
+}
+
+$textList:('Center':center,'Left':left,'Right':right,);
+@each $key,$value in $textList{ 
+  .text#{$key}{text-align:$value};  
+} 
+.formLastButton{
+  @extend .textRight
+}

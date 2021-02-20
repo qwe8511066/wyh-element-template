@@ -13,6 +13,7 @@ import publicComponents from "@/utils/publicComponents";
 import '@/directive/dialogDrag.js' //全局弹窗拖拽
 import service from '@/utils/request'
 import lodash from "lodash";
+
 //全局变量
 import '@/global/';
 if (process.env.NODE_ENV === 'production') {

@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Vue Element Admin',
+  title: '权限菜单模板',
 
   /**
    * @type {boolean} true | false

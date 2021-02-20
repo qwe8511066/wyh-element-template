@@ -1,15 +1,38 @@
 <template>
   <div>
-    <h3>F12 查看请求的变化</h3>
-    <el-form ref="form" :model="myPages" label-width="180px" class="myForm">
-      <el-form-item label="id的设置">
+    <el-form ref="form" :model="myPages" label-width="auto" class="myForm autoForm">
+      <el-form-item label="输入框">
         <el-input v-model="myPages.test.id"></el-input>
       </el-form-item>
-      <el-form-item label="name的设置">
-        <el-input v-model="myPages.admin.user.name"></el-input>
+      <el-form-item label="下拉框">
+        <el-select v-model="myPages.admin.user.name" placeholder="请选择">
+          <el-option label="张三" value="张三"></el-option>
+          <el-option label="李四" value="李四"></el-option>
+          <el-option label="王五" value="王五"></el-option>
+        </el-select>
       </el-form-item>
 
-      <el-form-item>
+      <el-form-item label="年月日">
+        <el-date-picker v-model="myPages.date" type="date" placeholder="选择日期"></el-date-picker>
+      </el-form-item>
+
+      <el-form-item label="年">
+        <el-date-picker v-model="myPages.year" type="year" placeholder="选择日期"></el-date-picker>
+      </el-form-item>
+
+      <el-form-item label="月">
+        <el-date-picker v-model="myPages.month" type="month" placeholder="选择日期"></el-date-picker>
+      </el-form-item>
+
+      <el-form-item label="多个日期">
+        <el-date-picker v-model="myPages.dates" type="dates" placeholder="选择日期"></el-date-picker>
+      </el-form-item>
+
+      <el-form-item label="日期范围">
+        <el-date-picker v-model="myPages.daterange" type="daterange" placeholder="选择日期"></el-date-picker>
+      </el-form-item>
+
+      <el-form-item class="formLastButton">
         <el-button type="primary" @click="resetFn">重置</el-button>
         <el-button type="primary" @click="searchFn">搜索</el-button>
       </el-form-item>
@@ -81,7 +104,7 @@
 
 <script>
 export default {
-  name: 'autoSearchData',
+  name: 'formComponentWidth',
   components: {},
   data() {
     return {

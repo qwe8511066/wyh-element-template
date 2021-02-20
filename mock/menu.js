@@ -202,30 +202,30 @@ module.exports = [
 
         {
           path: '/test',
-          name: '测试界面1',
+          name: '自适应表单组件宽度',
           //顶级菜单  模拟数据
           component: 'layout/index',
-          title: '测试界面1',
+          title: '自适应表单组件宽度',
           affix: false,//固定在tags-view 
           hidden: false, //是否隐藏
           bigScreen: false,//大屏(隐藏顶部和侧边栏) 
           children: [
             {
               path: '/test/test1',
-              name: 'home1',
+              name: 'home1-001',
               component: '',
               title: '测试界面1-001',
               children: [
                 {
                   path: '/test/test1/testA1',
                   name: 'home1',
-                  component: 'views/home1/index',
+                  component: 'views/formComponentWidth/index',
                   title: '测试界面A1-001',
                 },
                 {
                   path: '/test/test1/testB2',
-                  name: 'home1',
-                  component: 'views/home1/index',
+                  name: 'home2',
+                  component: 'views/home2/index',
                   title: '测试界面B1-001',
                 }
               ],
