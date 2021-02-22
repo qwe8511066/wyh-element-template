@@ -61,9 +61,9 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach(async (to, from, next) => {
   const getters = store.getters
-  //判断顶部菜单的路由切换 保存一个状态
+  //判断顶部菜单应用布局的菜单的路由切换 保存一个状态
   //如 跳转到顶部菜单A1  菜单结构是A1->A2->A2-2->A3  下次点击A1的时候跳转到A3去
-  if (getters.menuPosition == 'top' && whiteList.indexOf(to.path) === -1) {
+  if (getters.menuPosition == 'topApplication' && whiteList.indexOf(to.path) === -1) {
     let dynamicRoutes = getters.dynamicRoutes
     const index = checkArrayString(dynamicRoutes, 'label', to.meta.fatherNmae)
     const fatheIndex = checkArrayString(getters.menuModule, 'name', to.meta.fatherNmae)

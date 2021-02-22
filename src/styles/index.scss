@@ -268,6 +268,49 @@ aside {
   display: none;
 }
 
+
+.headerMenu{
+  @extend .width100;
+  .el-menu.el-menu--horizontal{
+    border-bottom: 0;
+  }
+  ul{
+    @extend .flexBox;
+  height:$headHeight;
+  }
+.el-submenu{
+  @extend .flex1;
+  @extend .flexContent;
+  margin-right:20px;
+  height: 100%;
+  .el-submenu__icon-arrow {
+    position: static;
+    vertical-align: middle;
+    margin-left: 8px;
+    margin-top: -3px;
+}
+.is-active{
+  .el-submenu__title {
+    // border-bottom:4px solid $headactiveBg!important;
+  }
+}
+.el-submenu__title {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  // border-bottom: 4px solid transparent;
+  // color: #909399;
+}
+}
+}
+
+.popperSubMenu.el-menu--horizontal{
+  ul.el-menu--popup{
+    max-height: 100vh;
+    overflow: auto;
+  }
+}
+
 .autoForm{
   .el-form-item{
     padding-left: 22px;
@@ -285,6 +328,10 @@ aside {
 $textList:('Center':center,'Left':left,'Right':right,);
 @each $key,$value in $textList{ 
   .text#{$key}{text-align:$value};  
+}
+$colorList:('FFF':#fff,);
+@each $key,$value in $colorList{ 
+  .color#{$key}{color:$value};
 } 
 .formLastButton{
   @extend .textRight

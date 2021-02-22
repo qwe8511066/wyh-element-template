@@ -38,21 +38,22 @@ const actions = {
       //追加404 写在静态会导致一开始就404
       menuModule.push({ path: '*', redirect: '/404', hidden: true });
 
-      //判断顶部布局的菜单
-      if (getters.menuPosition === 'top') {
+      store.dispatch('menu/setPosition', getters.menuPosition)
+      // //判断顶部菜单应用布局的菜单
+      // if (getters.menuPosition === 'topApplication') {
 
-        let activeRoute = parseInt(getters.activeRoute)
-        //判断下标是否超出菜单树的长度
-        if (activeRoute > menuModule.length) {
-          store.dispatch('menu/activeRoute', 0)
-          activeRoute = 0
-        }
-        //顶部菜单则重新排序过
-        commit('SET_ROUTES', menuModule[activeRoute].children)
-      } else {
-        //左侧菜单获取菜单树排序
-        commit('SET_ROUTES', getters.menuModule)
-      }
+      //   let activeRoute = parseInt(getters.activeRoute)
+      //   //判断下标是否超出菜单树的长度
+      //   if (activeRoute > menuModule.length) {
+      //     store.dispatch('menu/activeRoute', 0)
+      //     activeRoute = 0
+      //   }
+      //   //顶部菜单则重新排序过
+      //   commit('SET_ROUTES', menuModule[activeRoute].children)
+      // } else {
+      //   //左侧菜单获取菜单树排序
+      //   commit('SET_ROUTES', getters.menuModule)
+      // }
       resolve(menuModule)
     })
   }

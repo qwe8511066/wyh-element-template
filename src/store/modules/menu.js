@@ -88,8 +88,23 @@ const actions = {
       })
     })
   },
-  setPosition: (state, value) => {
+  setPosition({ commit }, value) {
     commit("SET_POSITION", value);
+    const getters = store.getters
+    //判断顶部菜单应用布局的菜单
+    if (getters.menuPosition === 'topApplication') {
+      let activeRoute = parseInt(getters.activeRoute)
+      //判断下标是否超出菜单树的长度
+      if (activeRoute > getters.menuModule.length) {
+        store.dispatch('menu/activeRoute', 0)
+        activeRoute = 0
+      }
+      //顶部菜单则重新排序过
+      store.dispatch('permission/setRoutes', getters.menuModule[activeRoute].children)
+    } else {
+      //左侧菜单获取菜单树排序
+      store.dispatch('permission/setRoutes', getters.menuModule)
+    }
   },
 
 

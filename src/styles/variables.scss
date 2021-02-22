@@ -10,6 +10,7 @@ $panGreen: #30B08F;
 
 // sidebar
 $menuText:#000;
+$headerMenuText:#fff;
 $menuActiveText:#409EFF;
 $subMenuActiveText:#1890ff; // https://github.com/ElemeFE/element/issues/12951
 
@@ -33,6 +34,7 @@ $mainPading:20px;
   menuActiveText: $menuActiveText;
   subMenuActiveText: $subMenuActiveText;
   menuBg: $menuBg;
+  headerMenuText:$headerMenuText;
   menuHover: $menuHover;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;

@@ -10,19 +10,32 @@
       <div class="flexBox height100">
         <div class="flex1 flexLeftContent">
           <el-tabs
-            v-if="menuPosition === 'top'"
+            v-if="menuPosition === 'topApplication'"
             :value="activeRoute.toString()"
             class="headerTabs"
             @tab-click="clickTab"
           >
             <el-tab-pane
-              :label="route.meta.title"
               :name="index.toString()"
-              style="color:#fff"
+              class="colorFFF"
               v-for="(route,index) in menuModule"
               :key="index"
-            ></el-tab-pane>
+            >
+              <span slot="label">
+                <i v-if="route.meta && route.meta.icon" :class="route.meta.icon"></i>
+                {{route.meta.title}}
+              </span>
+            </el-tab-pane>
           </el-tabs>
+
+          <el-scrollbar wrap-class="scrollbar-wrapper" class="headerMenu">
+            <Menu
+              v-if="menuPosition=='top'"
+              :mode="'horizontal'"
+              :backgroundColor="variables.headBg"
+              :textColor="variables.headerMenuText"
+            ></Menu>
+          </el-scrollbar>
         </div>
         <div class="right-menu">
           <el-dropdown
@@ -56,13 +69,19 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import Menu from './Sidebar/Menu'
+import variables from '@/styles/variables.scss'
 import { checkArray, checkArrayString, sonsTree } from '@/utils'
 export default {
   components: {
     Breadcrumb,
     Hamburger,
+    Menu,
   },
   computed: {
+    variables() {
+      return variables
+    },
     ...mapGetters([
       'sidebar',
       'name',
