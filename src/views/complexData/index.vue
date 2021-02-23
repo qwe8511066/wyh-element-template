@@ -253,6 +253,7 @@ export default {
                   //不能用@click  会跟冲突   得用这种的
                   onClick={(e) => {
                     this.$message('点击了：自定义按钮1')
+                    e.stopPropagation()
                   }}
                 >
                   自定义按钮1
@@ -263,6 +264,7 @@ export default {
                   //不能用@click  会跟冲突   得用这种的
                   onClick={(e) => {
                     this.$message('点击了：自定义按钮2')
+                    e.stopPropagation()
                   }}
                 >
                   自定义按钮2

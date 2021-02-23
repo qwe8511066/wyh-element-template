@@ -91,10 +91,10 @@ export default {
           </el-dropdown>
         }
         return newType ? <el-button type={item.type ? item.type : 'text'} onClick={(e) => {
-          if (item.click) {
-            item.click(scope)
-          }
           e.stopPropagation()
+          if (item.click) {
+            item.click(scope, e)
+          }
         }}
           icon={item.icon}>
           {item.text}

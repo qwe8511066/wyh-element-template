@@ -336,3 +336,8 @@ $colorList:('FFF':#fff,);
 .formLastButton{
   @extend .textRight
 }
+.el-table th.requiredStars>div::before{
+  content: '*';
+  color: #ff4949;
+  margin-right: 4px;
+}

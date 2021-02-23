@@ -98,6 +98,18 @@ module.exports = [
               name: '复杂自定义表单',
               component: 'views/complexData/index',
               title: '复杂自定义表单', icon: 'el-icon-s-help'
+            },
+            {
+              path: '/rowUpdate',
+              name: '行编辑',
+              component: 'views/rowUpdate/index',
+              title: '行编辑', icon: 'el-icon-s-help',
+              permissionButtons: [
+                {
+                  label: '编辑',
+                  icon: 'el-icon-edit'
+                },
+              ],
             }, {
               path: '/radioData',
               name: '单选表单',
