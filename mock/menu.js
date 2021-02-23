@@ -15,14 +15,14 @@ module.exports = [
               path: '/staticData',
               name: '静态列表',
               component: 'views/staticData/index',
-              title: '静态列表', icon: 'dashboard'
+              title: '静态列表', icon: 'el-icon-s-help'
             },
 
             {
               path: '/requestData',
               name: '接口表单(post 按钮权限)',
               component: 'views/requestData/index',
-              title: '接口表单(post 按钮权限)', icon: 'dashboard',
+              title: '接口表单(post 按钮权限)', icon: 'el-icon-s-help',
               permissionButtons: [
                 {
                   label: '新增',
@@ -38,7 +38,7 @@ module.exports = [
               path: '/requestData3',
               name: '接口表单(get 按钮权限)',
               component: 'views/requestData3/index',
-              title: '接口表单(get 按钮权限)', icon: 'dashboard',
+              title: '接口表单(get 按钮权限)', icon: 'el-icon-s-help',
               permissionButtons: [
                 {
                   label: '编辑',
@@ -50,19 +50,19 @@ module.exports = [
               path: '/requestData1',
               name: '接口返回对象不一致表单',
               component: 'views/requestData1/index',
-              title: '接口返回对象不一致的表单', icon: 'dashboard'
+              title: '接口返回对象不一致的表单', icon: 'el-icon-s-help'
             },
             {
               path: '/requestData2',
               name: '接口PageSize不一致表单',
               component: 'views/requestData2/index',
-              title: '接口PageSize不一致的表单', icon: 'dashboard'
+              title: '接口PageSize不一致的表单', icon: 'el-icon-s-help'
             },
             {
               path: '/customColumn',
               name: '自定义列(按钮权限)',
               component: 'views/customColumn/index',
-              title: '自定义列(按钮权限)', icon: 'dashboard',
+              title: '自定义列(按钮权限)', icon: 'el-icon-s-help',
               permissionButtons: [
                 {
                   label: '新增',
@@ -86,82 +86,82 @@ module.exports = [
               path: '/columnJudgment',
               name: '列的判断',
               component: 'views/columnJudgment/index',
-              title: '根据字段隐藏或显示列', icon: 'dashboard'
+              title: '根据字段隐藏或显示列', icon: 'el-icon-s-help'
             },
             {
               path: '/setListTable',
               name: '设置和获取list',
               component: 'views/setListTable/index',
-              title: '设置和获取list', icon: 'dashboard'
+              title: '设置和获取list', icon: 'el-icon-s-help'
             }, {
               path: '/complexData',
               name: '复杂自定义表单',
               component: 'views/complexData/index',
-              title: '复杂自定义表单', icon: 'dashboard'
+              title: '复杂自定义表单', icon: 'el-icon-s-help'
             }, {
               path: '/radioData',
               name: '单选表单',
               component: 'views/radioData/index',
-              title: '单选表单', icon: 'dashboard'
+              title: '单选表单', icon: 'el-icon-s-help'
             }, {
               path: '/checkData',
               name: '多选列表更新不清空已选',
               component: 'views/checkData/index',
-              title: '多选列表更新不清空已选', icon: 'dashboard'
+              title: '多选列表更新不清空已选', icon: 'el-icon-s-help'
             },
             {
               path: '/checkData1',
               name: '多选列表更新清空已选',
               component: 'views/checkData1/index',
-              title: '多选列表更新清空已选', icon: 'dashboard'
+              title: '多选列表更新清空已选', icon: 'el-icon-s-help'
             }, {
               path: '/resetMyPages',
               name: '重置myPages',
               component: 'views/resetMyPages/index',
-              title: '重置myPages', icon: 'dashboard'
+              title: '重置myPages', icon: 'el-icon-s-help'
             }, {
               path: '/autoSearchData',
               name: 'myPages变了自动搜索列表',
               component: 'views/autoSearchData/index',
-              title: 'myPages变了自动搜索列表', icon: 'dashboard'
+              title: 'myPages变了自动搜索列表', icon: 'el-icon-s-help'
             }, {
               path: '/maxheightData',
               name: '流动高度列表',
               component: 'views/maxheightData/index',
-              title: '流动高度列表', icon: 'dashboard'
+              title: '流动高度列表', icon: 'el-icon-s-help'
             },
 
             {
               path: '/thetreeData',
               name: '树形列表分页的',
               component: 'views/thetreeData/index',
-              title: '树形列表分页的', icon: 'dashboard'
+              title: '树形列表分页的', icon: 'el-icon-s-help'
             }, {
               path: '/thetreeData1',
               name: '树形列表不带分页的',
               component: 'views/thetreeData1/index',
-              title: '树形列表不带分页的', icon: 'dashboard'
+              title: '树形列表不带分页的', icon: 'el-icon-s-help'
             }, {
               path: '/multiLevelHeader',
               name: '多级表头',
               component: 'views/multiLevelHeader/index',
-              title: '多级表头', icon: 'dashboard'
+              title: '多级表头', icon: 'el-icon-s-help'
             }, {
               path: '/dynamicallyMergeTables',
               name: '动态合并表格',
               component: 'views/dynamicallyMergeTables/index',
-              title: '动态合并表格', icon: 'dashboard'
+              title: '动态合并表格', icon: 'el-icon-s-help'
             },
             {
               path: '/manuallyMergeTables',
               name: '手动合并表格',
               component: 'views/manuallyMergeTables/index',
-              title: '手动合并表格', icon: 'dashboard'
+              title: '手动合并表格', icon: 'el-icon-s-help'
             }, {
               path: '/totalAtTheEndOfTheTable',
               name: '表尾合计',
               component: 'views/totalAtTheEndOfTheTable/index',
-              title: '表尾合计', icon: 'dashboard'
+              title: '表尾合计', icon: 'el-icon-s-help'
             },
           ]
         },
@@ -172,30 +172,30 @@ module.exports = [
           redirect: '/dialogWyhElementChoose',
           title: '业务组件',
           name: '业务组件',
-          icon: 'dashboard',
+          icon: 'el-icon-s-help',
           children: [{
             path: '/dialogWyhElementChooseTabs',
             name: '列表选人(选项卡)',
             component: 'views/dialogWyhElementChooseTabs/index',
-            title: '列表选人(选项卡)', icon: 'dashboard'
+            title: '列表选人(选项卡)', icon: 'el-icon-s-help'
           },
           {
             path: '/dialogWyhElementChoose',
             name: '列表选人(多选)',
             component: 'views/dialogWyhElementChoose/index',
-            title: '列表选人(多选)', icon: 'dashboard'
+            title: '列表选人(多选)', icon: 'el-icon-s-help'
           },
           {
             path: '/dialogWyhElementChooseRadio',
             name: '列表选人(单选)',
             component: 'views/dialogWyhElementChooseRadio/index',
-            title: '列表选人(单选)', icon: 'dashboard'
+            title: '列表选人(单选)', icon: 'el-icon-s-help'
           },
           {
             path: '/dialogWyhElementChooseSelect',
             name: '下拉框单/多选人',
             component: 'views/dialogWyhElementChooseSelect/index',
-            title: '下拉框单/多选人', icon: 'dashboard'
+            title: '下拉框单/多选人', icon: 'el-icon-s-help'
           },
           ]
         },
