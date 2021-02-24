@@ -122,6 +122,33 @@ module.exports = [
       }
     }
   },
+
+  {
+    url: '/getList5',
+    type: 'post',
+    response: (config) => {
+      const { pageSize, page } = config.body
+      const list = []
+      const index = page * pageSize
+      for (let i = 0; i < pageSize; i++) {
+        list.push({
+          name: "@cname",
+          'type|1': "@boolean",
+          "date": "@datetime",//随机生成日期时间
+          "status|1-5": 5,
+          'number|1-1000': 1000,
+        })
+      }
+
+      return {
+        code: 20000,
+        data: {
+          totalCount: 1000,
+          list: list
+        }
+      }
+    }
+  },
   {
     url: '/getList',
     type: 'post',

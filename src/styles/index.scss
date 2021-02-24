@@ -333,6 +333,12 @@ $colorList:('FFF':#fff,);
 @each $key,$value in $colorList{ 
   .color#{$key}{color:$value};
 } 
+//背景颜色列表
+$bgList: ('FFF': #fff, );
+@each $key, $value in $bgList { 
+  .bg#{$key}{background:$value}
+} 
+
 .formLastButton{
   @extend .textRight
 }
