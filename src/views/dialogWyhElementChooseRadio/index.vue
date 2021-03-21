@@ -26,7 +26,7 @@
     &gt;&lt;/dialogWyhElementChoose&gt;
   data() {
     return {
-      //checkbox 的判断
+      //checkbox 的判断 
       radioAttribute: {
         //判断的属性 唯一值来判断
         type: &#x27;user.id&#x27;,
